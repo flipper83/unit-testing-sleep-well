@@ -20,6 +20,27 @@ public class CalculatorTest {
         assertEquals(5, outputWriter.getArgumentCatcher());
     }
 
+    @Test
+    public void shouldShowAdditionResultWithTheMemoryWhenCallAditionWithSavedValue() throws Exception {
+        MockOutputWriter outputWriter = givenOutputWriter();
+        InputReader inputReader = givenInputReader(2, 3, 2);
+        Memory memory = givenFakeMemory();
+        Calculator calculator = givenCalculator(outputWriter, inputReader, memory);
+
+        calculator.insertValue();
+        calculator.insertValue();
+        calculator.add();
+        calculator.save(0);
+        calculator.insertValue();
+        calculator.insertValueFromMemory(0);
+        calculator.add();
+
+        assertEquals(7, outputWriter.getArgumentCatcher());
+    }
+    private Memory givenFakeMemory() {
+        return new FakeMemory();
+    }
+
     private Memory givenDummyMemory() {
         return new DummyMemory();
     }
