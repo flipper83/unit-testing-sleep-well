@@ -9,14 +9,19 @@ public class CalculatorTest {
     public void shouldShowAdditionResultOnTheOutputStreamWhenCallAdition() throws Exception {
         MockOutputWriter outputWriter = givenOutputWriter();
         InputReader inputReader = givenInputReader(2, 3);
-        Calculator calculator = givenCalculator(outputWriter, inputReader);
+        Memory memory = givenDummyMemory();
+        Calculator calculator = givenCalculator(outputWriter, inputReader, memory);
 
         calculator.insertValue();
         calculator.insertValue();
         calculator.add();
 
-        assertEquals(3,outputWriter.getNumCalls());
+        assertEquals(3, outputWriter.getNumCalls());
         assertEquals(5, outputWriter.getArgumentCatcher());
+    }
+
+    private Memory givenDummyMemory() {
+        return new DummyMemory();
     }
 
     private InputReader givenInputReader(int... values) {
@@ -27,7 +32,8 @@ public class CalculatorTest {
         return new MockOutputWriter();
     }
 
-    private Calculator givenCalculator(MockOutputWriter outputWriter, InputReader inputReader) {
-        return new Calculator(outputWriter, inputReader);
+    private Calculator givenCalculator(MockOutputWriter outputWriter, InputReader inputReader,
+                                       Memory memory) {
+        return new Calculator(outputWriter, inputReader, memory);
     }
 }
