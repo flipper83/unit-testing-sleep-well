@@ -3,9 +3,6 @@ package com.karumi;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author flipper83
- */
 public class FakeMemory implements Memory {
     Map<Integer, Integer> mem = new HashMap<Integer, Integer>();
 

@@ -1,8 +1,5 @@
 package com.karumi;
 
-/**
- * @author flipper83
- */
 public class Calculator {
     private static final int MAX_ARGS = 2;
     private final OutputWriter outputWriter;

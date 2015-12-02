@@ -1,8 +1,5 @@
 package com.karumi;
 
-/**
- * @author flipper83
- */
 public class StubInputReader implements InputReader {
     private final int[] values;
     private int count = 0;

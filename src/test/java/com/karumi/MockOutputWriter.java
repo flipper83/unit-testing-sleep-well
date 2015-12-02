@@ -1,8 +1,5 @@
 package com.karumi;
 
-/**
- * @author flipper83
- */
 public class MockOutputWriter implements OutputWriter {
 
     private int numCalls;
